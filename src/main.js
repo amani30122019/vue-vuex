@@ -6,6 +6,8 @@ import store from './store'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 // fontawesome
-import '@fortawesome/fontawesome-free/css/all.min.css'
+import "@fortawesome/fontawesome-free/css/all.min.css"
+// My application global css
+import "./assets/css/main.css"
 
 createApp(App).use(store).use(router).mount('#app')
