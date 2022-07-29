@@ -31,6 +31,7 @@
     import {ErrorMessage, Field, Form} from 'vee-validate'
     import {v4 as uuid} from 'uuid'
 
+
     export default {
         name: "NewNoteView",
         components: {
@@ -43,14 +44,15 @@
             goHome() {
                 this.$router.push({name: 'home'})
             },
-            submitNote(values) {
+            submitNote(values, {resetForm}) {
                 const note_data = {
                     id: uuid(),
                     title: values.title,
                     content: values.content,
                 }
-                console.log(note_data)
-
+                this.$store.dispatch('saveNote', note_data)
+                resetForm()
+                this.goHome()
             },
             validateTitle(value) {
                 if (!value) {

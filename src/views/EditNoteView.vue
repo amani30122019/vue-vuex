@@ -19,7 +19,7 @@
                     <ErrorMessage class="text-danger m-2" name="content"/>
                     <div class="d-flex justify-content-center my-3">
                         <button @click="goHome" class="btn btn-danger mx-3">Close</button>
-                        <button class="btn btn-success" type="submit">Save</button>
+                        <button class="btn btn-success" type="submit">Update</button>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,9 @@
                     title: values.title,
                     content: values.content,
                 }
-                console.log(note_data)
+                this.$store.dispatch('updateNote', note_data)
+                this.goHome()
+
             },
             validateTitle(value) {
                 if (!value) {
@@ -71,7 +73,6 @@
         mounted() {
             const note_id = this.$route.params.id
             if (note_id) {
-
                 this.note = this.$store.getters.oneNote(note_id)
             }
         }
